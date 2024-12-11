@@ -157,6 +157,33 @@ section p {
     background: var(--main-blue);
 }
 
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+
+    .verical_divider {
+        display: none;
+    }
+
+    .info-section .panel {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .info-section .img-container {
+        height: auto; /* Adjust height for mobile */
+    }
+
+    .info-section .wierzenica-img {
+        width: 55%; 
+    }
+    .info-section .przyborowo-img {
+        width: 80%; 
+    }
+}
+
 /* RSVP Button */
 .rsvp_btn {
     display: inline-block;
