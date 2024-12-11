@@ -1,6 +1,7 @@
 # Gaba and Maciej's Wedding
 
-Welcome to our wedding site! This site provides all the information you need about our special day.
+Welcome to our wedding site! This site provides all the information you need about our special day.  
+The page is available here: https://thefrozenbrawler.github.io/GM_K_wedding_site/
 
 ## Table of Contents
 - [About](#about)
