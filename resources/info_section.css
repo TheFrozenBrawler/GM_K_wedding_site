@@ -162,4 +162,7 @@
     .info-section .przyborowo-img {
         width: 80%; 
     }
+    .map iframe {
+        width: 300px;
+    }
 }
