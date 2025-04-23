@@ -70,7 +70,7 @@
 @media (max-width: 1060px) {
     .rsvp-section {
         grid-template-columns: 1fr; /* Stack panels vertically */
-        max-width: 100%; /* Full width on mobile */
+        max-width: 90%; /* Full width on mobile */
     }
 
     .rsvp-section .panel {
@@ -84,7 +84,7 @@
     }
 
     .rsvp-section .phone-number {
-        font-size: 1.5rem; /* Adjust font size for mobile */
+        font-size: 1.2rem;
     }
 
     /* Alternative for hover effect on mobile devices */

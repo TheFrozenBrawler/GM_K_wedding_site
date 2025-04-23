@@ -55,6 +55,11 @@ header p {
     margin: 0 auto;
 }
 
+/* Default styles for the image */
+header img {
+    width: 400px; /* Default width */
+}
+
 /* Section Styles */
 section {
     padding: 30px 20px;
@@ -114,4 +119,10 @@ footer {
 footer p {
     margin: 0;
     font-size: 0.9rem;
+}
+
+@media (max-width: 1060px) {
+    header img {
+        width: 60%; /* Adjust the width for smaller screens */
+    }
 }

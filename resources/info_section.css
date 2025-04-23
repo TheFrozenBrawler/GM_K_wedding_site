@@ -141,6 +141,7 @@
 @media (max-width: 1060px) {
     .info-section {
         grid-template-columns: 1fr;
+        max-width: 90%;
     }
 
     .verical_divider {
