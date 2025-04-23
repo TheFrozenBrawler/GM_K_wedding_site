@@ -1,0 +1,165 @@
+/* Info Section */
+.info-section {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    padding: 30px 20px;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.info-section .panel {
+    background: var(--background-blue);
+    color: var(--main-blue);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-section .panel h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--main-blue-darker);
+}
+
+.info-section .panel h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--main-blue);
+}
+
+.info-section .panel p {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+
+.info-section .wierzenica-img {
+    width: 400px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.info-section .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 465px; /* Match the height of the wierzenica-img */
+}
+
+.info-section .przyborowo-img {
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+.verical_divider {
+    width: 2px;
+    background: var(--main-blue);
+}
+
+/* Map Section */
+.map iframe {
+    border: 0;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* General button styles */
+.excel_sites_button {
+    background: var(--background-img);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative; /* Required for positioning the ::after element */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    overflow: hidden; /* Ensure the hover text stays within the button */
+}
+
+.excel_sites_button:hover {
+    background: var(--main-blue); /* Change background color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+}
+
+/* Flowers button hover text */
+.flowers-button:hover::after {
+    content: "Zamiast kwiatów...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Gift button hover text */
+.gift-button:hover::after {
+    content: "Coś większego...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Default ::after styles to hide the text initially */
+.excel_sites_button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 1060px) {
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+
+    .verical_divider {
+        display: none;
+    }
+
+    .info-section .panel {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .info-section .img-container {
+        height: auto; /* Adjust height for mobile */
+    }
+
+    .info-section .wierzenica-img {
+        width: 55%; 
+    }
+    .info-section .przyborowo-img {
+        width: 80%; 
+    }
+}
