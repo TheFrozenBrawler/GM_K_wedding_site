@@ -1,0 +1,38 @@
+/* ##### */
+/* back button */
+.back-button-container {
+    text-align: center; /* Center the button horizontally */
+    margin: 50px 0; /* Add spacing above and below the button */
+}
+
+.back-button {
+    display: inline-block;
+    background: var(--main-blue);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Balitomre Typewriter Small Caps', monospace;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--main-blue-darker);
+    transform: scale(1.05);
+}
+
+.text-section p{
+    text-align: justify;
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+
+.post_scriptum {
+    margin-top: 3px;
+}
+
+.post_scriptum p {
+    font-size: 1.1rem;
+    color: #6f7ab5;
+}
