@@ -36,3 +36,26 @@
     font-size: 1.1rem;
     color: #6f7ab5;
 }
+
+/* Show iframe on desktop, button on mobile */
+.iframe-desktop { display: block; }
+.iframe-mobile { display: none; }
+
+@media (max-width: 1060px) {
+    .iframe-desktop { display: none; }
+    .iframe-mobile { display: block; text-align: center; margin: 30px 0; }
+    .sheet-mobile-button {
+        display: inline-block;
+        background: var(--main-blue, #4e5ca1);
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-family: inherit;
+        transition: background 0.3s;
+    }
+    .sheet-mobile-button:hover {
+        background: var(--main-blue-darker, #353f72);
+    }
+}
