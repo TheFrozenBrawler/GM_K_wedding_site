@@ -59,3 +59,72 @@
         background: var(--main-blue-darker, #353f72);
     }
 }
+
+.big-gift-img {
+    display: block;
+    margin: 15px auto 10px auto;
+    width: 200px;
+}
+
+.no-flowers-gift-img {
+    display: block;
+    margin: 15px auto 10px auto;
+    width: 160px;
+}
+
+.gift-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto 40px auto;
+    max-width: 500px;
+    /* background: #f7f5f0; */
+    background:  #939dcf;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(78,92,161,0.07);
+}
+
+.gift-checklist li {
+    display: flex;
+    align-items: center;
+    padding: 16px 22px;
+    border-bottom: 1px solid #e0e3ef;
+    font-size: 1.15rem;
+    color: var(--main-blue);
+    transition: background 0.2s;
+}
+
+.gift-checklist li:last-child {
+    border-bottom: none;
+}
+
+.gift-checklist input[type="checkbox"] {
+    accent-color: var(--main-blue);
+    /* accent-color: var(--background-img); */
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.gift-checklist label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.gift-checklist a {
+    /* color: var(--main-blue); */
+    color: var(--background-img);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.gift-checklist a:hover {
+    color: var(--main-blue-darker);
+    text-decoration: none;
+}
+
+.gift-checklist input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: var(--main-blue-darker);
+    a {color: var(--main-blue);}
+}

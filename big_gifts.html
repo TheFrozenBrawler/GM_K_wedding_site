@@ -37,32 +37,77 @@
 
       Każdy taki gest sprawi, że korzystanie z prezentu będzie dla nas nie tylko przyjemnością, ale i pięknym przypomnieniem o Was — naszych wyjątkowych gościach.</p>
     </section>
-    
-
-    <!-- <section>
-        <iframe width="100%" height="500px"
-                src="https://docs.google.com/spreadsheets/d/1-l9auYrLL3M6EE4mqmf-46VQCEf_7u_qxwgrCds0_Ms/edit?usp=sharing?gid=0&amp;single=true&amp;widget=true&amp;headers=false
-                "></iframe>                   
-
-    </section> -->
-
+  
     <section>
-  <div class="iframe-desktop">
-    <iframe width="105%" height="500px"
-      src="https://docs.google.com/spreadsheets/d/1-l9auYrLL3M6EE4mqmf-46VQCEf_7u_qxwgrCds0_Ms/edit?usp=sharing&gid=0&single=true&widget=true&headers=false">
-    </iframe>
-  </div>
-  <div class="iframe-mobile">
-    <a href="https://docs.google.com/spreadsheets/d/1-l9auYrLL3M6EE4mqmf-46VQCEf_7u_qxwgrCds0_Ms/edit?usp=sharing"
-       target="_blank"
-       class="sheet-mobile-button">
-      Otwórz listę prezentów w Google Sheets
-    </a>
-  </div>
-</section>
+      <img src="./img/big_gift.svg" alt="duży prezent" class="big-gift-img">
+    </section>
+    
+    <section>
+      <h2>Coś większego...</h2>
+      <ul class="gift-checklist">
+        <li>
+          <input type="checkbox" id="gift1">
+          <label for="gift1">
+            <a href="https://www.empik.com/kubek-z-napisem,p123456.html" target="_blank">Kubek z napisem</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift2">
+          <label for="gift2">
+            <a href="https://www.ceneo.pl/12345678" target="_blank">Książka kucharska</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift3">
+          <label for="gift3">
+            <a href="https://allegro.pl/oferta/notes-podrozny-987654321" target="_blank">Notes podróżny</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift4">
+          <label for="gift4">
+            <a href="https://www.decathlon.pl/p/termos-turystyczny-0-5l/_/R-p-123456" target="_blank">Termos turystyczny</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift5">
+          <label for="gift5">
+            <a href="https://www.empik.com/ramka-na-zdjecia,p654321.html" target="_blank">Ramka na zdjęcia</a>
+          </label>
+        </li>
+      </ul>
+    </section>
 
     <footer>
       <p>&copy; 2025 Gaba & Maciej Kowalscy</p>
     </footer>
+
+    <script>
+      // filepath: big_gifts.html
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.gift-checklist input[type="checkbox"]').forEach(function(checkbox) {
+          checkbox.addEventListener('click', function(e) {
+            if (checkbox.checked) {
+              const label = checkbox.parentElement.querySelector('a');
+              const giftName = label ? label.textContent : 'tego prezentu';
+              const confirmed = confirm(`Czy na pewno chcesz zaznaczyć "${giftName}" jako wybrany?`);
+              if (!confirmed) {
+                e.preventDefault();
+              }
+            }
+          });
+          checkbox.addEventListener('click', function(e) {
+            if (!checkbox.checked) {
+              const label = checkbox.parentElement.querySelector('a');
+              const giftName = label ? label.textContent : 'tego prezentu';
+              const confirmed = confirm(`Czy na pewno chcesz usunąć zaznaczenie z "${giftName}"?`);
+              if (!confirmed) {
+                e.preventDefault();
+              }
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

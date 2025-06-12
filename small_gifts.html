@@ -25,41 +25,89 @@
       <a href="index.html" class="back-button">Powrót na stronę główną</a>
     </div>
     
-    <section class="text-section">
-      <h2>Drodzy Goście,</h2>
-      <p>Kochamy kwiaty, jednak ich piękno jest bardzo ulotne, a nam trudno patrzeć, jak szybko przemijają. Jeśli chcielibyście obdarzyć nas jakimś upominkiem, zamiast bukietów, które wkrótce zwiędną, zachęcamy do rozważenia prezentu z naszej listy – dzięki temu Wasza życzliwość zostanie z nami na dłużej.</p>
-      <p>Każdy taki gest będzie dla nas wyjątkowy, a Wasza pamięć będzie towarzyszyć nam w codziennym życiu.</p>
-    </section>
-    <section class="post_scriptum">
-      <p><strong>PS:</strong> Największą radość sprawiają nam prezenty, w których można odnaleźć osobisty akcent od osoby obdarowującej. To właśnie dzięki personalizacji nawet najprostszy przedmiot staje się wyjątkową pamiątką i budzi ciepłe wspomnienia.
+      <section class="text-section">
+        <h2>Drodzy Goście,</h2>
+        <p>Kochamy kwiaty, jednak ich piękno jest bardzo ulotne, a nam trudno patrzeć, jak szybko przemijają. Jeśli chcielibyście obdarzyć nas jakimś upominkiem, zamiast bukietów, które wkrótce zwiędną, zachęcamy do rozważenia prezentu z naszej listy – dzięki temu Wasza życzliwość zostanie z nami na dłużej.</p>
+        <p>Każdy taki gest będzie dla nas wyjątkowy, a Wasza pamięć będzie towarzyszyć nam w codziennym życiu.</p>
+      </section>
+      <section class="post_scriptum">
+        <p><strong>PS:</strong> Największą radość sprawiają nam prezenty, w których można odnaleźć osobisty akcent od osoby obdarowującej. To właśnie dzięki personalizacji nawet najprostszy przedmiot staje się wyjątkową pamiątką i budzi ciepłe wspomnienia.
 
-      Jeśli macie ochotę, serdecznie zachęcamy do nadania osobistego charakteru upominkowi, który planujecie nam podarować. Może to być wybór sprawdzonej, szczególnie przez Was polecanej wersji danego przedmiotu, skomponowanie zestawu dopasowanego do naszych upodobań lub dołączenie krótkiej dedykacji — na przykład na wewnętrznej stronie opakowania.
+        Jeśli macie ochotę, serdecznie zachęcamy do nadania osobistego charakteru upominkowi, który planujecie nam podarować. Może to być wybór sprawdzonej, szczególnie przez Was polecanej wersji danego przedmiotu, skomponowanie zestawu dopasowanego do naszych upodobań lub dołączenie krótkiej dedykacji — na przykład na wewnętrznej stronie opakowania.
 
-      Każdy taki gest sprawi, że korzystanie z prezentu będzie dla nas nie tylko przyjemnością, ale i pięknym przypomnieniem o Was — naszych wyjątkowych gościach.</p>
-    </section>
+        Każdy taki gest sprawi, że korzystanie z prezentu będzie dla nas nie tylko przyjemnością, ale i pięknym przypomnieniem o Was — naszych wyjątkowych gościach.</p>
+      </section>
     
-
-    <!-- <section>
-        <iframe width="100%" height="500px"
-                src="https://docs.google.com/spreadsheets/d/1Q39ZxJmyYGQj3Q50mTwf-_UbOlBHHHBz4ZShmI5Qig4/edit?usp=sharing?widget=true&amp;headers=false"></iframe>
-    </section> -->
-        <section>
-      <div class="iframe-desktop">
-        <iframe width="100%" height="500px"
-          src="https://docs.google.com/spreadsheets/d/1Q39ZxJmyYGQj3Q50mTwf-_UbOlBHHHBz4ZShmI5Qig4/edit?usp=sharing&widget=true&headers=false"></iframe>
-      </div>
-      <div class="iframe-mobile">
-        <a href="https://docs.google.com/spreadsheets/d/1Q39ZxJmyYGQj3Q50mTwf-_UbOlBHHHBz4ZShmI5Qig4/edit?usp=sharing"
-           target="_blank"
-           class="sheet-mobile-button">
-          Otwórz listę prezentów w Google Sheets
-        </a>
-      </div>
-    </section>
+      <section>
+        <img src="./img/no_flowers.svg" alt="ikona kwiatów" class="no-flowers-gift-img" >
+      </section>
     
+      <section>
+      <h2>Zamiast kwiatów...</h2>
+      <ul class="gift-checklist">
+        <li>
+          <input type="checkbox" id="gift1">
+          <label for="gift1">
+            <a href="https://www.empik.com/kubek-z-napisem,p123456.html" target="_blank">Kubek z napisem</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift2">
+          <label for="gift2">
+            <a href="https://www.ceneo.pl/12345678" target="_blank">Książka kucharska</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift3">
+          <label for="gift3">
+            <a href="https://allegro.pl/oferta/notes-podrozny-987654321" target="_blank">Notes podróżny</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift4">
+          <label for="gift4">
+            <a href="https://www.decathlon.pl/p/termos-turystyczny-0-5l/_/R-p-123456" target="_blank">Termos turystyczny</a>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="gift5">
+          <label for="gift5">
+            <a href="https://www.empik.com/ramka-na-zdjecia,p654321.html" target="_blank">Ramka na zdjęcia</a>
+          </label>
+        </li>
+      </ul>
+    </section>
 
     <footer>
       <p>&copy; 2025 Gaba & Maciej Kowalscy</p>
     </footer>
+
+    <script>
+      // filepath: big_gifts.html
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.gift-checklist input[type="checkbox"]').forEach(function(checkbox) {
+          checkbox.addEventListener('click', function(e) {
+            if (checkbox.checked) {
+              const label = checkbox.parentElement.querySelector('a');
+              const giftName = label ? label.textContent : 'tego prezentu';
+              const confirmed = confirm(`Czy na pewno chcesz zaznaczyć "${giftName}" jako wybrany?`);
+              if (!confirmed) {
+                e.preventDefault();
+              }
+            }
+          });
+          checkbox.addEventListener('click', function(e) {
+            if (!checkbox.checked) {
+              const label = checkbox.parentElement.querySelector('a');
+              const giftName = label ? label.textContent : 'tego prezentu';
+              const confirmed = confirm(`Czy na pewno chcesz usunąć zaznaczenie z "${giftName}"?`);
+              if (!confirmed) {
+                e.preventDefault();
+              }
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

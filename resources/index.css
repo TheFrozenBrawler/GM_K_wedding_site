@@ -111,7 +111,7 @@ section p {
 footer {
     text-align: center;
     padding: 15px 10px;
-    background: #7d87c3;/*var(--main-blue);*/
+    background: #7d87c3;
     color: #fff;
     margin-top: 20px;
 }
