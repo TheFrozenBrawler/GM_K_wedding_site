@@ -58,7 +58,6 @@
     <!-- DATABASE SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script type="module">
-      // filepath: big_gifts.html
 
       // Initialize Supabase
       const supabaseUrl = 'https://vjuygnvtxvjilmmteffp.supabase.co';
@@ -129,7 +128,7 @@
                 return;
               }
               await supabase
-                .from('big_gifts')
+                .from('small_gifts')
                 .update({ checked: checkbox.checked })
                 .eq('id', gift.id);
             });
