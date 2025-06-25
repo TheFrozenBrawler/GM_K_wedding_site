@@ -44,70 +44,106 @@
     
       <section>
       <h2>Zamiast kwiatów...</h2>
-      <ul class="gift-checklist">
-        <li>
-          <input type="checkbox" id="gift1">
-          <label for="gift1">
-            <a href="https://www.empik.com/kubek-z-napisem,p123456.html" target="_blank">Kubek z napisem</a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" id="gift2">
-          <label for="gift2">
-            <a href="https://www.ceneo.pl/12345678" target="_blank">Książka kucharska</a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" id="gift3">
-          <label for="gift3">
-            <a href="https://allegro.pl/oferta/notes-podrozny-987654321" target="_blank">Notes podróżny</a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" id="gift4">
-          <label for="gift4">
-            <a href="https://www.decathlon.pl/p/termos-turystyczny-0-5l/_/R-p-123456" target="_blank">Termos turystyczny</a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" id="gift5">
-          <label for="gift5">
-            <a href="https://www.empik.com/ramka-na-zdjecia,p654321.html" target="_blank">Ramka na zdjęcia</a>
-          </label>
-        </li>
-      </ul>
+            <section class="post_scriptum">
+      <p>Aby zaznaczyć daną pozycję, należy kliknąć w odpowiednie pole wyboru. Zaznaczenia nie można cofnąć. W przypadku chęci zmiany decyzji prosimy o kontakt z właścicielem strony.</p>
+      </section>
+      <ul class="gift-checklist" id="gift-checklist"></ul>
     </section>
 
     <footer>
       <p>&copy; 2025 Gaba & Maciej Kowalscy</p>
     </footer>
 
-    <script>
+
+    <!-- DATABASE SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script type="module">
       // filepath: big_gifts.html
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.gift-checklist input[type="checkbox"]').forEach(function(checkbox) {
-          checkbox.addEventListener('click', function(e) {
-            if (checkbox.checked) {
-              const label = checkbox.parentElement.querySelector('a');
-              const giftName = label ? label.textContent : 'tego prezentu';
-              const confirmed = confirm(`Czy na pewno chcesz zaznaczyć "${giftName}" jako wybrany?`);
+
+      // Initialize Supabase
+      const supabaseUrl = 'https://vjuygnvtxvjilmmteffp.supabase.co';
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqdXlnbnZ0eHZqaWxtbXRlZmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4MzkxMjUsImV4cCI6MjA2NTQxNTEyNX0.o5PmFRzrazyYncv0ZcWPFYA7LalvtUvJelQY7r4H-Ig';
+      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+      const checklist = document.getElementById('gift-checklist');
+
+      // Fetch gifts from Supabase and render
+      async function loadGifts() {
+        const { data: gifts, error } = await supabase
+          .from('small_gifts')
+          .select('*')
+          .order('id', { ascending: true });
+
+        if (error) {
+          checklist.innerHTML = '<li>Błąd ładowania prezentów.</li>';
+          return;
+        }
+
+        checklist.innerHTML = '';
+        gifts.forEach(gift => {
+          const li = document.createElement('li');
+          li.className = gift.url ? 'gift-link' : 'gift-desc';
+
+          // If checked is null, show info text instead of checkbox
+          if (gift.checked === null) {
+            li.innerHTML = `
+              
+              <label>
+                ${gift.url
+                  ? `<a href="${gift.url}" target="_blank">${gift.name}</a>`
+                  : `<a>${gift.name}</a>`
+                }
+                ${gift.description !== null && gift.description !== undefined && gift.description !== ''
+                  ? `<p>${gift.description}</p>`
+                  : ''
+                }
+              </label>
+            `;
+          } else {
+            li.innerHTML = `
+              <input type="checkbox" id="gift${gift.id}" ${gift.checked ? 'checked' : ''}>
+              <label for="gift${gift.id}">
+                ${gift.url
+                  ? `<a href="${gift.url}" target="_blank">${gift.name}</a>`
+                  : `<a>${gift.name}</a>`
+                }
+                ${gift.description !== null && gift.description !== undefined && gift.description !== ''
+                  ? `<p>${gift.description}</p>`
+                  : ''
+                }
+              </label>
+            `;
+            // Add confirmation and update logic
+            const checkbox = li.querySelector('input[type="checkbox"]');
+            checkbox.addEventListener('click', async function(e) {
+              if (!checkbox.checked) {
+                e.preventDefault();
+                alert('Aby zmienić zaznaczenie prezentu, skontaktuj się z właścicielem strony.');
+                return;
+              }
+              const label = li.querySelector('a') || li;
+              const giftName = label ? label.textContent.trim() : 'tego prezentu';
+              const confirmed = confirm(`Czy na pewno chcesz zaznaczyć "${giftName}" jako wybrany? Odznaczenie tej opcji nie będzie możliwe.`);
               if (!confirmed) {
                 e.preventDefault();
+                return;
               }
-            }
-          });
-          checkbox.addEventListener('click', function(e) {
-            if (!checkbox.checked) {
-              const label = checkbox.parentElement.querySelector('a');
-              const giftName = label ? label.textContent : 'tego prezentu';
-              const confirmed = confirm(`Czy na pewno chcesz usunąć zaznaczenie z "${giftName}"?`);
-              if (!confirmed) {
-                e.preventDefault();
-              }
-            }
-          });
+              await supabase
+                .from('big_gifts')
+                .update({ checked: checkbox.checked })
+                .eq('id', gift.id);
+            });
+          }
+
+          checklist.appendChild(li);
         });
-      });
+      }
+
+      // Initial load
+      loadGifts();
+
+      // Refresh the checklist every 5 seconds
+      setInterval(loadGifts, 5000);
     </script>
   </body>
 </html>

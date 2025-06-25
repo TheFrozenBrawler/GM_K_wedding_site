@@ -76,7 +76,7 @@
     list-style: none;
     padding: 0;
     margin: 30px auto 40px auto;
-    max-width: 500px;
+    max-width: 700px;
     /* background: #f7f5f0; */
     background:  #939dcf;
     border-radius: 12px;
@@ -85,7 +85,7 @@
 
 .gift-checklist li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 16px 22px;
     border-bottom: 1px solid #e0e3ef;
     font-size: 1.15rem;
@@ -99,32 +99,75 @@
 
 .gift-checklist input[type="checkbox"] {
     accent-color: var(--main-blue);
-    /* accent-color: var(--background-img); */
     width: 20px;
     height: 20px;
     margin-right: 16px;
+    margin-top: 3px;
     cursor: pointer;
 }
 
 .gift-checklist label {
     flex: 1;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
-.gift-checklist a {
-    /* color: var(--main-blue); */
+.gift-checklist .gift-link a {
     color: var(--background-img);
     text-decoration: underline;
+    font-weight: 500;
+    font-size: 1.1em;
     transition: color 0.2s;
 }
 
-.gift-checklist a:hover {
+.gift-checklist .gift-link p {
+    font-size: 0.85em;
+    color: var(--background-img);
+    margin-top: 2px;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.gift-checklist .gift-link a:hover {
     color: var(--main-blue-darker);
     text-decoration: none;
 }
 
-.gift-checklist input[type="checkbox"]:checked + label {
+.gift-checklist .gift-desc a {
+    color: var(--background-img);
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.gift-checklist .gift-desc p {
+    font-size: 0.85em;
+    color: var(--background-img);
+    margin-top: 2px;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.gift-checklist input[type="checkbox"]:checked + label,
+.gift-checklist input[type="checkbox"]:checked + label a {
     text-decoration: line-through;
-    color: var(--main-blue-darker);
-    a {color: var(--main-blue);}
+    color: #4a5185;
+}
+.gift-checklist input[type="checkbox"]:checked + label p {
+    text-decoration: line-through;
+    color: #4a5185;
+}
+
+/* Add to your CSS for better visibility */
+.multi-allowed {
+  display: inline-block;
+  background: #e6eaf7;
+  color: #4e5ca1;
+  font-size: 0.7em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-style: italic;
 }
